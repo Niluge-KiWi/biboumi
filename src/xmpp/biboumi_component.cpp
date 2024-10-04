@@ -196,7 +196,10 @@ void BiboumiComponent::handle_presence(const Stanza& stanza)
                 {
                   const auto chan = irc->find_channel(iid.get_local());
                   if (chan && chan->joined)
-                    bridge->send_irc_nick_change(iid, to.resource, from.resource);
+                    {
+                      if (!own_nick.empty() && own_nick != to.resource)
+                        bridge->send_irc_nick_change(iid, to.resource, from.resource);
+                    }
                   else
                     { // send an error if we are not joined yet, instead of treating it as a join
                       this->send_stanza_error("presence", from_str, to_str, id, "modify", "not-acceptable", "You are not joined to this MUC.");

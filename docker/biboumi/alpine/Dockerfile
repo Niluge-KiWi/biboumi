@@ -8,7 +8,7 @@
 FROM docker.io/alpine:latest as builder
 
 RUN apk add --no-cache --virtual .build cmake expat-dev g++ git libidn-dev \
-        make postgresql-dev python2 sqlite-dev udns-dev util-linux-dev botan-dev
+        make postgresql-dev python3 sqlite-dev udns-dev util-linux-dev botan-dev
 
 
 RUN git clone https://lab.louiz.org/louiz/biboumi && \

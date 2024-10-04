@@ -20,7 +20,7 @@ RUN git clone https://lab.louiz.org/louiz/biboumi && \
              -DWITH_SQLITE3=1 \
              -DWITH_LIBIDN=1 \
              -DWITH_POSTGRESQL=1 && \
-    make -j8 && \
+    make -j$(nproc || echo 1) && \
     make install
 
 # ---
